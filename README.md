@@ -40,8 +40,6 @@ s# WearHouse
 
 
 <table>
-   
-
   <th>Login</th>
   <th>Home Page</th>
   <tr>
@@ -49,19 +47,26 @@ s# WearHouse
     <td><img src="Screenshots/HomePage.png" width="100%" /><br/></td>
   </tr>
 </table>
-<table>
-   
 
+<table>
   <th>Add Customer</th>
   <th>Add Product</th>
-  <th>Sell Products</th>
-  
   <tr>
     <td><img src="Screenshots/AddCustomer.png" width="100%" /><br/></td>
     <td><img src="Screenshots/AddProduct.png" width="100%" /><br/></td>
-    <td><img src="Screenshots/SellProducts.png" width="100%" /><br/></td>
   </tr>
 </table>
+
+<table>
+  <th>Sell Products</th>
+  <th>Invoice Details</th>
+  <tr>
+    <td><img src="Screenshots/SellProducts.png" width="100%" /><br/></td>
+    <td><img src="Screenshots/InvoiceDetails.png" width="100%" /><br/></td>
+  </tr>
+</table>
+<table>
+   
 
 ![Dashboard](images/dashboard.png)
 ![Sales Page](images/sales.png)
