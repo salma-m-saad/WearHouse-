@@ -39,8 +39,11 @@
 
 
 <table>
-  <th>Login</th>
-  <th>Home Page</th>
+  <tr>
+  
+    <th>Login</th>
+    <th>Home Page</th>
+  </tr>
   <tr>
     <td><img src="Screenshots/Login.png" width="100%" /><br/></td>
     <td><img src="Screenshots/HomePage.png" width="100%" /><br/></td>
