@@ -41,20 +41,21 @@ ASP.NET MVC web app for managing a clothing store’s cashier operations. Featur
 
 <details>
   <summary>Requirements</summary>
+  <br/>
     To run this project, you need the following software and packages installed:
-<br/>
+  <br/>
 
   **Development Environment:**  
-- ASP.NET Core Web App (Model-View-Controller)  
-- .NET 8.0  
-- Visual Studio 2022  
+    - ASP.NET Core Web App (Model-View-Controller)  
+    - .NET 8.0  
+    - Visual Studio 2022  
 
-**Database:**  
-- SQL Server Management Studio 2022  
+  **Database:**  
+    - SQL Server Management Studio 2022  
 
-**NuGet Packages:**  
-- Microsoft.EntityFrameworkCore.SqlServer (version 9.0.10)  
-- Microsoft.EntityFrameworkCore.Tools (version 9.0.10) 
+  **NuGet Packages:**  
+    - Microsoft.EntityFrameworkCore.SqlServer (version 9.0.10)  
+    - Microsoft.EntityFrameworkCore.Tools (version 9.0.10) 
 
 </details>
 <br/>
