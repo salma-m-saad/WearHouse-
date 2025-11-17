@@ -1,7 +1,7 @@
 # WearHouse 🚀
-<hr>
+
 ## Project Overview
-<hr>
+
 <details>
   <summary>Key Features</summary>
 
@@ -13,7 +13,7 @@
 - **Backend Focused:** Secure and efficient data handling.
 
 </details>
-<hr>
+
 <details>
   <summary>Technologies Used</summary>
 
@@ -22,7 +22,7 @@
 - **Frontend:** HTML, CSS, JavaScript, Bootstrap  
 
 </details>
-<hr>
+
 <details>
   <summary>Learning Outcomes</summary>
 
@@ -32,4 +32,4 @@
 - Integrating frontend and backend
 
 </details>
-<hr>
+
