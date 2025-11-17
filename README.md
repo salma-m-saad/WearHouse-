@@ -38,7 +38,6 @@
 
 
 
-<div>Login</div>
 
 <table>
    
@@ -46,8 +45,8 @@
   <th>Login</th>
   <th>Home Page</th>
   <tr>
-    <td><img src="Screenshots/Login.png" width="300" /><br/></td>
-    <td><img src="Screenshots/HomePage.png" width="300" /><br/></td>
+    <td><img src="Screenshots/Login.png" width="50%" /><br/></td>
+    <td><img src="Screenshots/HomePage.png" width="50%" /><br/></td>
 
   </tr>
 </table>
