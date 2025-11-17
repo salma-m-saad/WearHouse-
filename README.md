@@ -40,7 +40,6 @@
 
 <table>
   <tr>
-  
     <th>Login</th>
     <th>Home Page</th>
   </tr>
