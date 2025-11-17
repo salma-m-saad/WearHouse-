@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f0ce73 !important;
+            --warning: #f0ce73 !important;
+            --orange: #ffb833 !important;
+            --dark: black !important;
+            --white: #ffffff !important;
+        }
+
+        body {
+            background-color: #fffdf5 !important;
+            color: black !important;
+        }
+
+        .bg-gradient-primary {
+            background-color: ##f0ce73 !important;
+            background-image: linear-gradient(180deg, #f0ce73 10%, #ffb833 100%) !important;
+            background-size: cover;
+        }
+
+        .btn-primary {
+            background-color: #f0ce73 !important;
+            border-color: #f0ce73 !important;
+        }
+
+            .btn-primary:hover {
+                background-color: #ffb833 !important;
+                border-color: #ffb833 !important;
+            }
+
+        .sidebar .nav-item .nav-link,
+        .sidebar .sidebar-brand-text,
+        .sidebar .nav-link span,
+        .sidebar .nav-link i {
+            color: #ffffff !important; 
+            font-weight: 600 !important; 
+            text-shadow: 0 0 6px rgba(255, 255, 255, 0.5); 
+        }
+
+            .sidebar .nav-item .nav-link:hover {
+                color: #fffde7 !important; 
+                transform: scale(1.03);
+                transition: 0.2s ease;
+            }
+
+    </style>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Admin Dashboard</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+           
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item active">
+                <a class="nav-link" href="~/Dashboard/Charts">
+                    <h5>
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    Charts
+                    </h5>
+                </a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="~/Dashboard/CustomersDetails">
+                    <h5>
+                    <i class="fas fa-fw fa-table"></i>
+                    Customers Details
+                    </h5>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="~/Dashboard/ProductsDetails">
+                    <h5>
+                    <i class="fas fa-fw fa-table"></i>
+                   Products Details
+                    </h5>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="~/Dashboard/Invoices">
+                    <h5>
+                    <i class="fas fa-fw fa-table"></i>
+                   Invoices Details
+                    </h5>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="~/HomePage/Index">
+                    <h5>
+                    <i class="fas fa-home"></i>
+                   Home
+                    </h5>
+                </a>
+            </li>
+           
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+
+        @RenderBody()
+   
+    </div>
+   
+    <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+   
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="~/vendor/chart.js/Chart.min.js"></script>
+
+    @RenderSection("ChartScripts", required: false)
+    <!-- Page level custom scripts -->
+   
+
+</body>
+
+</html>

@@ -1,0 +1,220 @@
+﻿@{
+    Layout = "_DashboardLayout";
+}
+<style>
+    .chart-area,
+    .chart-bar {
+        position: relative;
+        width: 100% !important; 
+        height: 400px; 
+    }
+
+        .chart-area canvas,
+        .chart-bar canvas {
+            width: 100% !important; 
+            height: 100% !important;
+        }
+</style>
+<div id="content-wrapper" class="d-flex flex-column">
+
+    <div id="content">
+
+        <div class="container-fluid">
+
+            <h1 class="h3 mb-2 text-gray-800">Charts</h1>
+            <p class="mb-4">
+                Monthly revenue overview — track your business performance and cash flow trends with ease.
+            </p>
+
+            <div class="row">
+                <div class="col-12">
+
+                    <!-- Area Chart -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-area">
+                                <canvas id="myAreaChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bar Chart -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-bar">
+                                <canvas id="myBarChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Your Website 2020</span>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+@section ChartScripts {@* 
+    <script src="~/js/demo/chart-area-demo.js"></script> *@
+    <script src="~/js/demo/chart-pie-demo.js"></script>
+   @*  <script src="~/js/demo/chart-bar-demo.js"></script> *@
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
+  
+    <script>
+        const ctxArea = document.getElementById("myAreaChart").getContext('2d');
+        const ctxBar = document.getElementById("myBarChart").getContext('2d');
+
+        const chartLabels = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(ViewBag.ChartDates));
+        const chartData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(ViewBag.ChartProfits));
+
+        // ======== Area Chart ========
+        const myAreaChart = new Chart(ctxArea, {
+            type: 'line',
+            data: {
+                labels: chartLabels,
+                datasets: [{
+                    label: "Daily Profit",
+                    data: chartData,
+                    backgroundColor: "rgba(255, 204, 51, 0.2)",
+                    borderColor: "rgba(255, 204, 51, 1)",
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+                options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+            mode: 'nearest',
+            intersect: false 
+        },
+        plugins: {
+            legend: { display: true },
+            tooltip: {
+                enabled: true,
+                mode: 'index',
+                intersect: false,
+                callbacks: {
+                    label: function(context) {
+                        let label = context.dataset.label || '';
+                        let value = context.parsed.y || 0;
+                        return `${label}: ${value.toLocaleString()} ج.م`;
+                    }
+                }
+            },
+            zoom: {
+                pan: {
+                    enabled: true,
+                    mode: 'x',
+                },
+                zoom: {
+                    enabled: true,
+                    mode: 'x',
+                }
+            }
+        },
+
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Date' },
+                        ticks: { autoSkip: false, maxRotation: 45, minRotation: 45 }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Profit' }
+                    }
+                }
+            }
+        });
+
+        // ======== Bar Chart ========
+        const myBarChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: chartLabels,
+                datasets: [{
+                    label: "Daily Profit",
+                    data: chartData,
+                            backgroundColor: "rgba(255, 204, 51, 0.2)",   // نفس لون الخلفية بتاع الـ Area Chart
+                            borderColor: "rgba(255, 204, 51, 1)",
+                            borderWidth: 1
+                }]
+            },
+               options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+            mode: 'nearest', 
+            intersect: false 
+        },
+        plugins: {
+            legend: { display: true },
+            tooltip: {
+                enabled: true,
+                mode: 'index',
+                intersect: false,
+                callbacks: {
+                    label: function(context) {
+                        let label = context.dataset.label || '';
+                        let value = context.parsed.y || 0;
+                        return `${label}: ${value.toLocaleString()} ج.م`;
+                    }
+                }
+            },
+            zoom: {
+                pan: {
+                    enabled: true,
+                    mode: 'x',
+                },
+                zoom: {
+                    enabled: true,
+                    mode: 'x',
+                }
+            }
+        },
+
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Date' },
+                        ticks: { autoSkip: false, maxRotation: 45, minRotation: 45 }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Profit' }
+                    }
+                }
+            }
+        });
+
+
+        const totalDays = chartLabels.length;
+        if (totalDays > 7) {
+            myAreaChart.options.scales.x.min = totalDays - 7;
+            myAreaChart.options.scales.x.max = totalDays - 1;
+            myAreaChart.update();
+
+            myBarChart.options.scales.x.min = totalDays - 7;
+            myBarChart.options.scales.x.max = totalDays - 1;
+            myBarChart.update();
+        }
+    </script>
+
+}

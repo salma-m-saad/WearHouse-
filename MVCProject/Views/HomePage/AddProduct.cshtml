@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<header class="masthead">
+</header>
+<style>
+    .upload-label {
+        font-weight: bold;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .image-upload-box {
+        border: 2px dashed #ccc;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.3s;
+        background-color: #f8f9fa;
+        height: 180px; 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .image-upload-box:hover {
+            border-color: #007bff;
+            background-color: #eef6ff;
+        }
+
+        .image-upload-box img {
+            width: 120px; 
+            height: 120px; 
+            object-fit: cover; 
+            border-radius: 10px;
+            margin-top: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+    #upload-text {
+        color: #777;
+        font-size: 14px;
+        margin: 0;
+    }
+</style>
+
+<body>
+
+
+
+
+    <div class="container mt-5 pt-5 position-relative" style="z-index: 1;">
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-header bg-primary text-white text-center fs-4">
+                <i class="fas fa-user-plus me-2"></i> Add New Customer
+            </div>
+
+            <div class="card-body px-5 py-4">
+                <form id="productForm" asp-action="AddProduct" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="CategoryID" class="form-label">Category</label>
+                            <select id="CategoryID" name="CategoryID" class="form-select" required>
+                                <option value="">Select category</option>
+                                @foreach (var item in ViewBag.Category)
+                                {
+                                    <option value="@item.ID">@item.Name</option>
+                                }
+                                
+                               
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="Price" class="form-label">Price ($)</label>
+                            <input type="number" name="Price" id="Price" class="form-control" placeholder="Price" required min="1">
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="Quantity" class="form-label">Quantity</label>
+                            <input type="number" name="Quantity" id="Quantity" class="form-control" placeholder="Quantity" required min="1">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="Size" class="form-label">Size</label>
+                            <input type="text" name="Size" id="Size" class="form-control" placeholder="Size" required>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="upload-label" for="Pic">Upload Product Image</label>
+
+                            <div class="image-upload-box" onclick="document.getElementById('Pic').click()">
+                                <p id="upload-text">Click or drag image here</p>
+                                <img id="preview" src="#" alt="Preview" style="display:none;" />
+                            </div>
+
+                            <input type="file" name="Pic" id="Pic" accept="image/*" style="display:none;" onchange="previewImage(event)">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Description" class="form-label">Description</label>
+                        <textarea name="Description" id="Description" class="form-control" placeholder="Enter product description"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 py-2">+ Add Product</button>
+                </form>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+</body>
+<script>
+    function previewImage(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById('preview');
+        const uploadText = document.getElementById('upload-text');
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = "block";
+                uploadText.style.display = "none";
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+
+</html>

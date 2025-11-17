@@ -1,0 +1,252 @@
+﻿
+ @model List<Product>
+
+@section Styles {
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<style>
+    #mainNav {
+    background-color: #212529 !important;
+    }
+
+    #content {
+    margin-top: 80px;
+    }
+
+    #QRCodeSearchForm {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  
+    padding-top:120px;
+    width: 100%;
+    }
+
+    #QRCodeSearchForm input#QRCodeSearch {
+    width: 50%;
+    max-width: 600px;
+    min-width: 200px;
+    height: 40px;
+    }
+
+    #QRCodeSearchForm button {
+    height: 40px;
+    margin-left: 10px;
+    }
+
+
+    .table-wrapper {
+    width: 90%;
+    margin: 20px auto;
+    }
+
+    #dataTable tbody tr:hover,
+    #selectedProductsTable tbody tr:hover {
+    background-color: #fff3cd;
+    cursor: pointer;
+    }
+
+    .selected-row {
+    background-color: #fff3cd !important;
+    }
+
+    #selectedProductsContainer {
+    background: white;
+    z-index: 1;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 50px;
+    }
+</style>
+}
+
+<div class="container-fluid">
+
+   
+    
+    <div id="QRCodeSearchForm">
+
+        <input id="QRCodeSearch" type="text" class="form-control" placeholder="Search by QRCode...">
+        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+
+    </div>
+
+    <div class="table-wrapper">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Product Details</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>QRCode</th>
+                                <th>Category</th>
+                                <th>Size</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Image</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                @if(item.Quantity>0)
+                                {
+                                    <tr data-id="@item.ID" data-qrcode="@item.QRCode">
+                                        <td>@item.QRCode</td>
+                                        <td>
+                                            @foreach (Category cat in ViewBag.Categort)
+                                            {
+                                                if (cat.ID == item.CategoryID)
+                                                {
+                                                    @cat.Name
+                                                }
+                                            }
+                                        </td>
+                                        <td>@item.Size</td>
+                                        <td>@item.Price</td>
+                                        <td>
+                                            <select class="form-control quantity-select" required>
+                                                @for (int i = 1; i <= item.Quantity; i++)
+                                                {
+                                                    <option value="@i">@i</option>
+                                                }
+                                            </select>
+                                        </td>
+                                        <td class="p-0 text-center align-middle">
+                                            @if (!string.IsNullOrEmpty(item.Image))
+                                            {
+                                                <img src="~/UploadedImages/@item.Image"
+                                                     class="img-fluid"
+                                                     style="width:90%;height:90px;object-fit:contain;" />
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted d-block py-3">No Image</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                    
+                                }
+                                
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+    <div class="table-wrapper">
+        <div id="selectedProductsContainer">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="text-primary mb-0">Selected Products</h5>
+                <form id="confirmForm" asp-action="InvoiceShow" method="post">
+                    <div id="SelectedProductsInputs"></div>
+                    <button type="submit" id="confirmBtn" class="btn btn-success" disabled>
+                        <i class="fas fa-check"></i> Confirm
+                    </button>
+                </form>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="selectedProductsTable">
+                    <thead>
+                        <tr>
+                            <th>QRCode</th>
+                            <th>Category</th>
+                            <th>Size</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Image</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/vendor/jquery/jquery.min.js"></script>
+<script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="~/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="~/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+      
+        $('#dataTable').DataTable({ dom: 't' });
+
+      
+        $('.quantity-select').select2({ width: '100%', placeholder: 'Select Quantity', allowClear: true });
+
+       
+        $('#dataTable tbody').on('click', 'tr', function (e) {
+            if ($(e.target).is('select') || $(e.target).closest('.select2-container').length) return;
+            var $row = $(this), id = $row.data('id');
+            if (!id) return;
+
+            if ($row.hasClass('selected-row')) {
+                $row.removeClass('selected-row');
+                $('#selectedProductsTable tbody').find('tr[data-id="' + id + '"]').remove();
+            } else {
+                $row.addClass('selected-row');
+                var qr = $row.data('qrcode'),
+                    category = $row.find('td').eq(1).text().trim(),
+                    size = $row.find('td').eq(2).text().trim(),
+                    price = $row.find('td').eq(3).text().trim(),
+                    qty = $row.find('.quantity-select').val() || '1',
+                    imgHtml = $row.find('td').eq(5).html() || '';
+
+                var $new = $('<tr data-id="' + id + '" data-qty="' + qty + '">\
+                    <td>' + qr + '</td><td>' + category + '</td><td>' + size + '</td>\
+                    <td>' + price + '</td><td class="selected-qty">' + qty + '</td><td>' + imgHtml + '</td></tr>');
+                $('#selectedProductsTable tbody').append($new);
+            }
+            toggleConfirmButton();
+        });
+
+    
+        $(document).on('change', '.quantity-select', function () {
+            var $sel = $(this), newQty = $sel.val(), id = $sel.closest('tr').data('id');
+            var $selRow = $('#selectedProductsTable tbody').find('tr[data-id="' + id + '"]');
+            if ($selRow.length) {
+                $selRow.find('.selected-qty').text(newQty);
+                $selRow.attr('data-qty', newQty);
+            }
+        });
+
+        $('#selectedProductsTable tbody').on('click', 'tr', function () {
+            var id = $(this).data('id');
+            $(this).remove();
+            $('#dataTable tbody').find('tr[data-id="' + id + '"]').removeClass('selected-row');
+            toggleConfirmButton();
+        });
+
+     
+        $('#confirmForm').on('submit', function () {
+            $('#SelectedProductsInputs').empty();
+            $('#selectedProductsTable tbody tr').each(function (i) {
+                var id = $(this).data('id'), qty = $(this).data('qty');
+                $('#SelectedProductsInputs').append(`<input type="hidden" name="SelectedProducts[${i}].ID" value="${id}"/>`);
+                $('#SelectedProductsInputs').append(`<input type="hidden" name="SelectedProducts[${i}].Quantity" value="${qty}"/>`);
+            });
+        });
+
+        function toggleConfirmButton() {
+            $('#confirmBtn').prop('disabled', $('#selectedProductsTable tbody tr').length === 0);
+        }
+
+   
+        $('#QRCodeSearch').on('keyup', function () {
+            var value = $(this).val().toLowerCase();
+            $('#dataTable tbody tr').filter(function () {
+                $(this).toggle($(this).data('qrcode').toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>

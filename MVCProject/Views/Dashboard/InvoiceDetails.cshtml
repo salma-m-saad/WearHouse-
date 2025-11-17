@@ -1,0 +1,225 @@
+﻿@{
+    Layout = "_DashboardLayout";
+}
+@model Invoice
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Purchase Invoice</title>
+    <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+        background-color: #f4f6f9;
+        font-family: 'Segoe UI', sans-serif;
+        }
+
+        .page-container {
+        width: 80%;
+        margin: 40px auto;
+        }
+
+
+        .top-actions, .bottom-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 15px 0;
+        }
+
+        .btn-custom {
+        background-color: #2e59d9;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        }
+
+        .btn-custom:hover {
+        background-color: #224abe;
+        color: #fff;
+        }
+
+        .btn-back {
+        background-color: #e2e6ea;
+        color: #333;
+        }
+
+        .btn-back:hover {
+        background-color: #d1d5da;
+        }
+
+     
+        .invoice-container {
+        background: #fff;
+        padding: 25px 35px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .invoice-header {
+        text-align: center;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #e3e6f0;
+        padding-bottom: 8px;
+        }
+
+        .invoice-header h2 {
+        color: #2e59d9;
+        font-weight: 700;
+        margin-bottom: 5px;
+        }
+
+        .invoice-header h4 {
+        color: #6c757d;
+        font-size: 1rem;
+        }
+
+        .invoice-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        font-size: 1.05rem;
+        }
+
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 15px;
+        }
+
+        th, td {
+        padding: 10px;
+        border: 1px solid #dee2e6;
+        text-align: center;
+        }
+
+        th {
+        background-color: #f8f9fc;
+        font-weight: bold;
+        color: #4e73df;
+        }
+
+        .invoice-summary {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        font-size: 1.05rem;
+        }
+
+        .summary-left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        }
+
+        .summary-right {
+        text-align: right;
+        color: #333;
+        }
+
+        .total {
+        font-weight: bold;
+        color: #2e59d9;
+        margin-bottom: 5px;
+        }
+
+        .bottom-actions {
+        justify-content: center;
+        margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+    <div class="page-container">
+
+
+        <div class="top-actions">
+            <a href="javascript:history.back()" class="btn-custom btn-back">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </a>
+        </div>
+        <form asp-action="EditInvoice">
+            @Html.AntiForgeryToken()
+            <div class="invoice-container">
+
+                <!-- Header -->
+           
+                    <div class="invoice-header">
+                        <h2>Invoice</h2>
+                        <h4>Invoice No: @Model.InvoiceID</h4>
+                    </div>
+
+                    <!-- Customer Info -->
+                    <div class="invoice-info">
+                        <div><strong>Customer:</strong>@Model.Customer.FirstName @Model.Customer.LastName</div>
+                        <div><strong>Phone:</strong> @Model.Customer.Phone</div>
+                    </div>
+
+                    <!-- Table -->
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>Total</th>
+                                <th>Retrieved</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.InvoiceDetails)
+                            {
+                                <tr>
+                                    @foreach (var cat in ViewBag.Category)
+                                    {
+                                        if (cat.ID == item.Product.CategoryID)
+                                        {
+                                            <td>@cat.Name</td>
+                                        }
+
+                                    }
+                            
+                                    <td>@item.Quantity</td>
+                                    <td>@item.Price</td>
+                                    <td>@(item.Quantity*item.Price)</td>
+                                    <td> <input type="checkbox" name="SelectedProducts" value="@item.InvoiceDetailID" /></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                    <div class="invoice-summary">
+                        <div class="summary-left">
+                            <div class="total">Total: @Model.TotalAmount EGP</div>
+                            <div class="total">Paid: @Model.TotalAmount EGP</div>
+                        </div>
+                        <div class="summary-right">
+                            <strong>Date:</strong> @Model.Date
+                        </div>
+                    </div>
+           
+            </div>
+
+            <input type="hidden" name="InvoiceID" value="@Model.InvoiceID" />
+
+
+            <div class="bottom-actions">
+                <button type="submit" class="btn-custom">
+                    <i class="fa-solid fa-pen-to-square"></i> Edit
+                </button>
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>
