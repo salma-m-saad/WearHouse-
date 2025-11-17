@@ -16,9 +16,7 @@ ASP.NET MVC web app for managing a clothing store’s cashier operations. Featur
 - **Backend Focused:** Secure and efficient data handling.
 
 </details>
-
----
-
+<br/>
 <details>
   <summary>Technologies Used</summary>
 
@@ -27,7 +25,7 @@ ASP.NET MVC web app for managing a clothing store’s cashier operations. Featur
 - **Frontend:** HTML, CSS, JavaScript, Bootstrap  
 
 </details>
----
+<br/>
 <details>
   <summary>Learning Outcomes</summary>
 
