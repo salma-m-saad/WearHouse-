@@ -1,4 +1,4 @@
-# WearHouse 🚀
+# WearHouse 
 
 ## Project Overview
 
@@ -32,3 +32,14 @@
 - Integrating frontend and backend
 
 </details>
+
+<details>
+  <summary>Screenshots:</summary>
+
+
+![Login Page](images/login.png)
+![Dashboard](images/dashboard.png)
+![Sales Page](images/sales.png)
+
+</details>
+
