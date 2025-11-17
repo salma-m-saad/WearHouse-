@@ -38,7 +38,7 @@
 
 
 
-<label>Login</label>
+<div>Login</div>
 <img src="Screenshots/Login.png" width="50%" /><br/>
 
 
