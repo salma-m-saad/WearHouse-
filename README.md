@@ -50,8 +50,10 @@
 </table>
 
 <table>
-  <th>Add Customer</th>
-  <th>Add Product</th>
+  <tr>
+    <th>Add Customer</th>
+    <th>Add Product</th>
+  </tr>
   <tr>
     <td><img src="Screenshots/AddCustomer.png" width="100%" /><br/></td>
     <td><img src="Screenshots/AddProduct.png" width="100%" /><br/></td>
@@ -59,16 +61,20 @@
 </table>
 
 <table>
-  <th>Sell Products</th>
+  <tr>
+    <th>Sell Products</th>
+  </tr>
   <tr>
     <td><img src="Screenshots/SellProducts.png" width="100%" /><br/></td>
   </tr>
 </table>
 
 <table>
-  <th>Products Dashboard</th>
-  <th>Customers Dashboard</th>
-  <th>Invoices Dashboard</th>
+  <tr>
+    <th>Products Dashboard</th>
+    <th>Customers Dashboard</th>
+    <th>Invoices Dashboard</th>
+  </tr>
   <tr>
     <td><img src="Screenshots/Products.png" width="100%" /><br/></td>
     <td><img src="Screenshots/Customers.png" width="100%" /><br/></td>
@@ -77,14 +83,18 @@
 </table>
 
 <table>
-  <th>Invoice Details</th>
+  <tr>
+    <th>Invoice Details</th>
+  </tr>
   <tr>
     <td><img src="Screenshots/InvoiceDetails.png" width="100%" /><br/></td>
   </tr>
 </table>
 
 <table>
-  <th>Chart Details</th>
+  <tr>
+    <th>Chart Details</th>
+  </tr>
   <tr>
     <td><img src="Screenshots/Chart.png" width="100%" /><br/></td>
   </tr>
