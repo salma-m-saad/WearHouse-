@@ -37,7 +37,8 @@
   <summary>Screenshots:</summary>
 
 
-Label 1
+
+<label>Login</label>
 <img src="Screenshots/Login.png" width="50%" /><br/>
 
 
