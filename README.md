@@ -1,5 +1,5 @@
-# WearHouse 🚀
 
+<h1 style="margin:0; padding:0;">WearHouse 🚀</h1>
 ## Project Overview
 
 <details>
