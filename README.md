@@ -37,9 +37,9 @@
   <summary>Screenshots:</summary>
 
 
-
-<img src="Screenshots/Login.png" width="150" /><br/>
 Label 1
+<img src="Screenshots/Login.png" width="50%" /><br/>
+
 
 ![Dashboard](images/dashboard.png)
 ![Sales Page](images/sales.png)
