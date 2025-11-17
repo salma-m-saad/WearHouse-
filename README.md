@@ -1,4 +1,3 @@
-<img width="1920" height="915" alt="Invoices" src="https://github.com/user-attachments/assets/41a40008-2c04-4931-858f-eb1ce088c7de" />s# WearHouse 
 
 ## Project Overview
 
@@ -81,16 +80,15 @@
     <td><img src="Screenshots/InvoiceDetails.png" width="100%" /><br/></td>
   </tr>
 </table>
+
 <table>
   <th>Chart Details</th>
   <tr>
     <td><img src="Screenshots/Chart.png" width="100%" /><br/></td>
   </tr>
 </table>
-   
 
-![Dashboard](images/dashboard.png)
-![Sales Page](images/sales.png)
+   
 
 </details>
 
