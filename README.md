@@ -45,8 +45,7 @@
   <th>Login</th>
   <th>Home Page</th>
   <tr>
-    <b>Login</b>
-    <br/>
+   
     <td><img src="Screenshots/Login.png" width="100%" /><br/></td>
     <td><img src="Screenshots/HomePage.png" width="100%" /><br/></td>
 
@@ -55,12 +54,14 @@
 <table>
    
 
-  <th>Login</th>
-  <th>Home Page</th>
+  <th>Add Customer</th>
+  <th>Add Product</th>
+  <th>Sell Products</th>
+  
   <tr>
-    <td><img src="Screenshots/Login.png" width="100%" /><br/></td>
-    <td><img src="Screenshots/HomePage.png" width="100%" /><br/></td>
-
+    <td><img src="Screenshots/AddCustomer.png" width="100%" /><br/></td>
+    <td><img src="Screenshots/AddProduct.png" width="100%" /><br/></td>
+    <td><img src="Screenshots/SellProducts.png" width="100%" /><br/></td>
   </tr>
 </table>
 
