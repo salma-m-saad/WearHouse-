@@ -45,9 +45,9 @@
 
   
   <tr>
-     <thead>Login</thead>
+     <th>Login</th>
     <td><img src="Screenshots/Login.png" width="300" /><br/></td>
-        <thead>Home Page</thead>
+    <th>Home Page</th>
     <td><img src="Screenshots/HomePage.png" width="300" /></td>
   </tr>
 </table>
