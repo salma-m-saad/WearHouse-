@@ -17,6 +17,7 @@ ASP.NET MVC web app for managing a clothing store’s cashier operations. Featur
 
 </details>
 <br/>
+
 <details>
   <summary>Technologies Used</summary>
 
@@ -26,6 +27,7 @@ ASP.NET MVC web app for managing a clothing store’s cashier operations. Featur
 
 </details>
 <br/>
+
 <details>
   <summary>Learning Outcomes</summary>
 
@@ -35,6 +37,7 @@ ASP.NET MVC web app for managing a clothing store’s cashier operations. Featur
 - Integrating frontend and backend
 
 </details>
+<br/>
 
 <details>
   <summary>Requirements</summary>
@@ -53,6 +56,7 @@ ASP.NET MVC web app for managing a clothing store’s cashier operations. Featur
 - Microsoft.EntityFrameworkCore.Tools (version 9.0.10) 
 
 </details>
+<br/>
 
 <details>
   <summary>Screenshots:</summary>
