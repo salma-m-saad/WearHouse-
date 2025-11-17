@@ -13,7 +13,7 @@
 - **Backend Focused:** Secure and efficient data handling.
 
 </details>
-
+<hr>
 <details>
   <summary>Technologies Used</summary>
 
