@@ -37,7 +37,7 @@
   <summary>Screenshots:</summary>
 
 
-![Login Page](images/login.png)
+![Login Page](Screenshots/Login.png)
 ![Dashboard](images/dashboard.png)
 ![Sales Page](images/sales.png)
 
