@@ -41,10 +41,8 @@ ASP.NET MVC web app for managing a clothing store’s cashier operations. Featur
 
 <details>
   <summary>Requirements</summary>
-  <br/>
-    To run this project, you need the following software and packages installed:
   
-  <br/>
+  To run this project, you need the following software and packages installed:
 
   **Development Environment:**  
     - ASP.NET Core Web App (Model-View-Controller)  
