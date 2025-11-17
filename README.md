@@ -41,10 +41,11 @@
 <div>Login</div>
 
 <table>
+ <th>Login</th>
+    <th>Home Page</th>
   
   <tr>
-    <th>Login</th>
-    <th>Home Page</th>
+   
     <td><img src="Screenshots/Login.png" width="300" /><br/></td>
     <td><img src="Screenshots/HomePage.png" width="300" /></td>
   </tr>
