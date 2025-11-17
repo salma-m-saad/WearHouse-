@@ -39,8 +39,15 @@
 
 
 <div>Login</div>
-<img src="Screenshots/Login.png" width="50%" /><br/>
 
+<tabel>
+  <th>Login</th>
+  <th>Home Page</th>
+  <tr>
+    <td><img src="Screenshots/Login.png" width="50%" /><br/></td>
+    <td><img src="Screenshots/HomePage.png" width="50%" /></td>
+  </tr>
+</tabel>
 
 ![Dashboard](images/dashboard.png)
 ![Sales Page](images/sales.png)
