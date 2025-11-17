@@ -45,10 +45,8 @@ s# WearHouse
   <th>Login</th>
   <th>Home Page</th>
   <tr>
-   
     <td><img src="Screenshots/Login.png" width="100%" /><br/></td>
     <td><img src="Screenshots/HomePage.png" width="100%" /><br/></td>
-
   </tr>
 </table>
 <table>
