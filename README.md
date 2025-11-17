@@ -37,7 +37,10 @@
   <summary>Screenshots:</summary>
 
 
-![Login Page](Screenshots/Login.png)
+
+<img src="Screenshots/Login.png" width="150" /><br/>
+Label 1
+
 ![Dashboard](images/dashboard.png)
 ![Sales Page](images/sales.png)
 
