@@ -2,6 +2,7 @@
 **Project Overview:**  
 ASP.NET MVC web app for managing a clothing store’s cashier operations.Features include product management, inventory tracking, sales processing, and invoice generation.
 
+<br/>
 ر
 <details>
   <summary>Key Features</summary>
